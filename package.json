@@ -19,6 +19,9 @@
     "test": "vitest --coverage"
   },
   "dependencies": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "lint": "eslint 'src/**/*.ts{,x}'",
     "react": "^18.2.0"
   },
   "devDependencies": {
