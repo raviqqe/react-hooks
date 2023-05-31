@@ -1,32 +1,39 @@
 {
   "name": "@raviqqe/react-hooks",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "My React hooks",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/raviqqe/react-hooks.git"
-  },
+  "repository": "https://github.com/raviqqe/react-hooks",
+  "bugs": "https://github.com/raviqqe/react-hooks/issues",
   "keywords": [
     "react",
     "typescript"
   ],
   "author": "Yota Toyama",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/raviqqe/react-hooks/issues"
+  "publishConfig": {
+    "provenance": true
   },
-  "homepage": "https://github.com/raviqqe/react-hooks#readme",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "lint": "eslint 'src/**/*.ts{,x}'",
+    "test": "vitest --coverage"
+  },
   "dependencies": {
     "react": "^18.2.0"
   },
   "devDependencies": {
     "@raviqqe/eslint-config": "^1.2.13",
     "@raviqqe/tsconfig": "^1.0.6",
+    "@testing-library/react": "^14.0.0",
+    "@types/react": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.0",
+    "@vitest/coverage-c8": "^0.31.2",
     "eslint": "^8.41.0",
+    "jsdom": "^22.1.0",
+    "typescript": "^5.0.4",
     "vitest": "^0.31.2"
   }
 }
