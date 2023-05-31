@@ -34,7 +34,7 @@ it("runs a callback", () => {
   waitFor(() => expect(index).toBe(1));
 });
 
-it("runs a callback", () => {
+it("runs a callback twice", () => {
   let index = 0;
 
   const renderComponent = (value: number) =>
