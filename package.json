@@ -1,10 +1,10 @@
 {
   "name": "@raviqqe/react-hooks",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "My React hooks",
   "main": "dist/index.js",
   "scripts": {
-    "test": "test"
+    "test": "vitest --coverage"
   },
   "repository": {
     "type": "git",
