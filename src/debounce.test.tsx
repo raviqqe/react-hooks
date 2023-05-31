@@ -33,3 +33,29 @@ it("runs a callback", () => {
 
   waitFor(() => expect(index).toBe(1));
 });
+
+it("runs a callback", () => {
+  let index = 0;
+
+  const renderComponent = (value: number) =>
+    render(
+      <Component
+        value={value}
+        onChange={() => {
+          index++;
+        }}
+      />
+    );
+
+  act(() => {
+    renderComponent(1);
+  });
+
+  waitFor(() => expect(index).toBe(1));
+
+  act(() => {
+    renderComponent(2);
+  });
+
+  waitFor(() => expect(index).toBe(2));
+});
