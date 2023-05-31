@@ -1,1 +1,1 @@
-export const useDebounce = () => {};
+export * from "./debounce.js";
