@@ -1,5 +1,5 @@
 import { act, render, waitFor } from "@testing-library/react";
-import { expect, it } from "vitest";
+import { vi, beforeEach, afterEach, expect, it } from "vitest";
 import { useDebounce } from "./debounce.js";
 
 interface Props {
@@ -8,28 +8,28 @@ interface Props {
 }
 
 const Component = ({ value, onChange }: Props) => {
-  useDebounce(onChange, 100, [value]);
+  useDebounce(onChange, 1, [value]);
 
   return null;
 };
 
+beforeEach(() => {
+  vi.useFakeTimers();
+});
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
+
 it("runs without any error", () => {
   render(<Component onChange={() => {}} value={1} />);
+  vi.runAllTimers();
 });
 
 it("runs a callback", async () => {
   let index = 0;
 
-  await act(() =>
-    render(
-      <Component
-        onChange={() => {
-          index++;
-        }}
-        value={1}
-      />
-    )
-  );
+  await act(() => render(<Component onChange={() => index++} value={1} />));
 
   await waitFor(() => expect(index).toBe(1));
 });
