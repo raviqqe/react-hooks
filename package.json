@@ -16,12 +16,12 @@
   "type": "module",
   "main": "dist/main.js",
   "scripts": {
-    "test": "vitest --coverage"
-  },
-  "dependencies": {
     "build": "tsc",
     "prepare": "npm run build",
     "lint": "eslint 'src/**/*.ts{,x}'",
+    "test": "vitest --coverage"
+  },
+  "dependencies": {
     "react": "^18.2.0"
   },
   "devDependencies": {
