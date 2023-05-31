@@ -2,13 +2,8 @@
   "name": "@raviqqe/react-hooks",
   "version": "0.1.0",
   "description": "My React hooks",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/raviqqe/react-hooks.git"
-  },
-  "bugs": {
-    "url": "https://github.com/raviqqe/react-hooks/issues"
-  },
+  "repository": "https://github.com/raviqqe/react-hooks",
+  "bugs": "https://github.com/raviqqe/react-hooks/issues",
   "keywords": [
     "react",
     "typescript"
@@ -23,7 +18,6 @@
   "scripts": {
     "test": "vitest --coverage"
   },
-  "homepage": "https://github.com/raviqqe/react-hooks#readme",
   "dependencies": {
     "react": "^18.2.0"
   },
