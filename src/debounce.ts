@@ -24,5 +24,6 @@ export const useDebounce = (
     }, delay);
 
     return clear;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 };
