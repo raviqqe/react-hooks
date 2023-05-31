@@ -64,13 +64,13 @@ it("debounces two calls into one", async () => {
   );
 
   const renderComponent = (value: number) =>
-    rerender(<Component onChange={() => index++} value={value} />);
+    act(() => rerender(<Component onChange={() => index++} value={value} />));
 
-  act(() => renderComponent(1));
+  renderComponent(1);
 
   await waitFor(() => expect(index).toBe(1));
 
-  act(() => renderComponent(2));
+  renderComponent(2);
 
   await waitFor(() => expect(index).toBe(2));
 });
