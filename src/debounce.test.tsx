@@ -1,13 +1,35 @@
-import { it } from "vitest";
+import { expect, it } from "vitest";
 import { useDebounce } from "./debounce.js";
-import { render } from "@testing-library/react";
+import { act, render, waitFor } from "@testing-library/react";
 
-const Component = ({ value }: { value: number }) => {
-  useDebounce(() => {}, 1, [value]);
+interface Props {
+  value: number;
+  onChange: () => void;
+}
+
+const Component = ({ value, onChange }: Props) => {
+  useDebounce(onChange, 1, [value]);
 
   return null;
 };
 
 it("runs without any error", () => {
-  render(<Component value={1} />);
+  render(<Component value={1} onChange={() => {}} />);
+});
+
+it("runs a callback", () => {
+  let index = 0;
+
+  act(() => {
+    render(
+      <Component
+        value={1}
+        onChange={() => {
+          index++;
+        }}
+      />
+    );
+  });
+
+  waitFor(() => expect(index).toBe(1));
 });
