@@ -2,13 +2,12 @@
   "name": "@raviqqe/react-hooks",
   "version": "0.1.0",
   "description": "My React hooks",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "vitest --coverage"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/raviqqe/react-hooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raviqqe/react-hooks/issues"
   },
   "keywords": [
     "react",
@@ -16,8 +15,13 @@
   ],
   "author": "Yota Toyama",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/raviqqe/react-hooks/issues"
+  "publishConfig": {
+    "provenance": true
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "vitest --coverage"
   },
   "homepage": "https://github.com/raviqqe/react-hooks#readme",
   "dependencies": {
