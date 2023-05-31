@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Component = ({ value, onChange }: Props) => {
-  useDebounce(onChange, 1, [value]);
+  useDebounce(onChange, 100, [value]);
 
   return null;
 };
@@ -59,8 +59,12 @@ it("runs a callback twice", async () => {
 it("debounces two calls into one", async () => {
   let index = 0;
 
+  const { rerender } = await act(() =>
+    render(<Component onChange={() => index++} value={0} />)
+  );
+
   const renderComponent = (value: number) =>
-    render(
+    rerender(
       <Component
         onChange={() => {
           index++;
@@ -69,12 +73,11 @@ it("debounces two calls into one", async () => {
       />
     );
 
-  await act(() => renderComponent(1));
-  await act(() => renderComponent(2));
+  act(() => renderComponent(1));
 
   await waitFor(() => expect(index).toBe(1));
 
-  await act(() => renderComponent(3));
+  act(() => renderComponent(2));
 
   await waitFor(() => expect(index).toBe(2));
 });
