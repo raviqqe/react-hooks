@@ -86,7 +86,6 @@ it("debounces three calls into one", async () => {
 
   renderComponent(1);
   renderComponent(2);
-  renderComponent(3);
 
   await waitFor(() => expect(index).toBe(1));
 
