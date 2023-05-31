@@ -1,0 +1,23 @@
+{
+  "name": "@raviqqe/react-hooks",
+  "version": "1.0.0",
+  "description": "My React hooks",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raviqqe/react-hooks.git"
+  },
+  "keywords": [
+    "react",
+    "typescript"
+  ],
+  "author": "Yota Toyama",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raviqqe/react-hooks/issues"
+  },
+  "homepage": "https://github.com/raviqqe/react-hooks#readme"
+}
