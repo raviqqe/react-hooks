@@ -14,7 +14,7 @@
     "provenance": true
   },
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "vitest --coverage"
   },
