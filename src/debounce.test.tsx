@@ -77,23 +77,20 @@ it("debounces two calls into one", async () => {
 it("debounces three calls into one", async () => {
   let index = 0;
 
-  const renderComponent = (value: number) =>
-    render(
-      <Component
-        onChange={() => {
-          index++;
-        }}
-        value={value}
-      />
-    );
+  const { rerender } = await act(() =>
+    render(<Component onChange={() => index++} value={0} />)
+  );
 
-  await act(() => renderComponent(1));
-  await act(() => renderComponent(2));
-  await act(() => renderComponent(3));
+  const renderComponent = (value: number) =>
+    rerender(<Component onChange={() => index++} value={value} />);
+
+  renderComponent(1);
+  renderComponent(2);
+  renderComponent(3);
 
   await waitFor(() => expect(index).toBe(1));
 
-  await act(() => renderComponent(3));
+  renderComponent(3);
 
   await waitFor(() => expect(index).toBe(2));
 });
