@@ -1,6 +1,7 @@
 {
   "extends": "@raviqqe/tsconfig/tsconfig.json",
   "compilerOptions": {
+    "jsx": "react-jsx",
     "outDir": "dist",
     "rootDir": "src"
   },
