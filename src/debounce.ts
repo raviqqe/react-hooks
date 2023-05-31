@@ -1,4 +1,4 @@
-import { useRef, type DependencyList, useEffect } from "react";
+import { useRef, type DependencyList, useEffect, useCallback } from "react";
 
 export const useDebounce = (
   callback: () => void,
@@ -8,6 +8,12 @@ export const useDebounce = (
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const callbackRef = useRef<() => void>(callback);
 
+  const clear = useCallback(() => {
+    if (timer.current) {
+      clearTimeout(timer.current);
+    }
+  }, []);
+
   useEffect(() => {
     callbackRef.current = callback;
 
@@ -16,10 +22,6 @@ export const useDebounce = (
       timer.current = null;
     }, delay);
 
-    return () => {
-      if (timer.current) {
-        clearTimeout(timer.current);
-      }
-    };
-  }, [callback, delay, ...dependencies]);
+    return clear;
+  }, dependencies);
 };
