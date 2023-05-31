@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/raviqqe/react-hooks/issues"
   },
-  "homepage": "https://github.com/raviqqe/react-hooks#readme"
+  "homepage": "https://github.com/raviqqe/react-hooks#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
 }
