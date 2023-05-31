@@ -1,6 +1,1 @@
-{
-  "extends": ["@raviqqe"],
-  "rules": {
-    "canonical/no-unused-exports": "off"
-  }
-}
+{ "extends": ["@raviqqe"] }
