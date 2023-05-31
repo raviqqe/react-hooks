@@ -47,15 +47,11 @@ it("runs a callback", () => {
       />
     );
 
-  act(() => {
-    renderComponent(1);
-  });
+  act(() => renderComponent(1));
 
   waitFor(() => expect(index).toBe(1));
 
-  act(() => {
-    renderComponent(2);
-  });
+  act(() => renderComponent(2));
 
   waitFor(() => expect(index).toBe(2));
 });
