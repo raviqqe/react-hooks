@@ -11,10 +11,15 @@ export const useDebounce = (
   useEffect(() => {
     callbackRef.current = callback;
 
+    setTimeout(() => {
+      callback();
+      timer.current = null;
+    }, delay);
+
     return () => {
       if (timer.current) {
         clearTimeout(timer.current);
       }
     };
-  }, dependencies);
+  }, [callback, delay, ...dependencies]);
 };
