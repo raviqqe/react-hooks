@@ -12,7 +12,7 @@ export const useDebounce = (
     callbackRef.current = callback;
 
     setTimeout(() => {
-      callback();
+      callbackRef.current();
       timer.current = null;
     }, delay);
 
