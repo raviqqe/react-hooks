@@ -23,7 +23,6 @@ afterEach(() => {
 
 it("runs without any error", () => {
   render(<Component onChange={() => {}} value={1} />);
-  vi.runAllTimers();
 });
 
 it("runs a callback", async () => {
