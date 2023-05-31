@@ -64,14 +64,7 @@ it("debounces two calls into one", async () => {
   );
 
   const renderComponent = (value: number) =>
-    rerender(
-      <Component
-        onChange={() => {
-          index++;
-        }}
-        value={value}
-      />
-    );
+    rerender(<Component onChange={() => index++} value={value} />);
 
   act(() => renderComponent(1));
 
