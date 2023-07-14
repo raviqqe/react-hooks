@@ -43,7 +43,7 @@ it("runs a callback twice", async () => {
           index++;
         }}
         value={value}
-      />
+      />,
     );
 
   await act(() => renderComponent(1));
@@ -59,7 +59,7 @@ it("debounces two calls into one", async () => {
   let index = 0;
 
   const { rerender } = await act(() =>
-    render(<Component onChange={() => index++} value={0} />)
+    render(<Component onChange={() => index++} value={0} />),
   );
 
   const renderComponent = (value: number) =>
@@ -78,7 +78,7 @@ it("debounces three calls into one", async () => {
   let index = 0;
 
   const { rerender } = await act(() =>
-    render(<Component onChange={() => index++} value={0} />)
+    render(<Component onChange={() => index++} value={0} />),
   );
 
   const renderComponent = (value: number) =>
