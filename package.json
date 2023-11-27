@@ -32,7 +32,7 @@
     "@vitejs/plugin-react": "^4.0.0",
     "@vitest/coverage-v8": "^0.34.1",
     "eslint": "^8.41.0",
-    "jsdom": "^22.1.0",
+    "jsdom": "^23.0.0",
     "typescript": "^5.0.4",
     "vitest": "^0.34.1"
   }
