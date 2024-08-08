@@ -1,7 +1,7 @@
 import { startTransition, useEffect, useState } from "react";
 
-export const useLocale = (): string => {
-  const [locale, setLocale] = useState("en");
+export const useLocale = (language: string): string => {
+  const [locale, setLocale] = useState(language);
 
   useEffect(() => {
     startTransition(() => setLocale(window.navigator.language));
