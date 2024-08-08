@@ -49,8 +49,6 @@ it("debounces two calls into one", async () => {
 
   value++;
   rerender();
-  value++;
-  rerender();
 
   await waitFor(() => expect(index).toBe(1));
 
@@ -66,8 +64,6 @@ it("debounces three calls into one", async () => {
 
   const { rerender } = renderHook(() => useDebounce(() => index++, 1, [value]));
 
-  value++;
-  rerender();
   value++;
   rerender();
   value++;
