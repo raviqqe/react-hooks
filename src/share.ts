@@ -6,6 +6,7 @@ export const useShare = (): ShareFunction | null => {
   const [share, setShare] = useState<ShareFunction | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!window.navigator.share) {
       return;
     }
