@@ -11,13 +11,13 @@ afterEach(() => {
 });
 
 it("runs without any error", () => {
-  renderHook(() => useDebounce(() => {}, 1, []));
+  renderHook(() => useDebounce(1, () => {}, []));
 });
 
 it("runs a callback", async () => {
   let index = 0;
 
-  renderHook(() => useDebounce(() => index++, 1, []));
+  renderHook(() => useDebounce(1, () => index++, []));
 
   await waitFor(() => expect(index).toBe(1));
 });
@@ -26,7 +26,7 @@ it("runs a callback twice", async () => {
   let value = 0;
   let index = 0;
 
-  const { rerender } = renderHook(() => useDebounce(() => index++, 1, [value]));
+  const { rerender } = renderHook(() => useDebounce(1, () => index++, [value]));
 
   value++;
   rerender();
@@ -43,7 +43,7 @@ it("debounces two calls into one", async () => {
   let value = 0;
   let index = 0;
 
-  const { rerender } = renderHook(() => useDebounce(() => index++, 1, [value]));
+  const { rerender } = renderHook(() => useDebounce(1, () => index++, [value]));
 
   value++;
   rerender();
@@ -60,7 +60,7 @@ it("debounces three calls into one", async () => {
   let value = 0;
   let index = 0;
 
-  const { rerender } = renderHook(() => useDebounce(() => index++, 1, [value]));
+  const { rerender } = renderHook(() => useDebounce(1, () => index++, [value]));
 
   value++;
   rerender();
