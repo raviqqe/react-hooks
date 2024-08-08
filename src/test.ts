@@ -1,3 +1,11 @@
-import { vi } from "vitest";
+import { cleanup } from "@testing-library/react";
+import { afterEach, beforeAll, vi } from "vitest";
 
-(global as unknown as { jest: unknown }).jest = vi;
+beforeAll(() => {
+  (global as unknown as { jest: unknown }).jest = vi;
+});
+
+afterEach(() => {
+  vi.restoreAllMocks();
+  cleanup();
+});
