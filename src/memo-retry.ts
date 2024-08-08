@@ -1,5 +1,5 @@
 import { type DependencyList, useMemo } from "react";
-import { useToggle } from "react-use";
+import { useToggle } from "./toggle.js";
 
 export const useMemoRetry = <T>(
   callback: () => T,
