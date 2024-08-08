@@ -1,4 +1,4 @@
-import { renderHook, act } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
 import { expect, it } from "vitest";
 import { useMemoRetry } from "./memo-retry.js";
 
