@@ -1,4 +1,4 @@
-import { act, renderHook, waitFor } from "@testing-library/react";
+import { renderHook, waitFor } from "@testing-library/react";
 import { vi, beforeEach, afterEach, expect, it } from "vitest";
 import { useDebounce } from "./debounce.js";
 
@@ -17,9 +17,7 @@ it("runs without any error", () => {
 it("runs a callback", async () => {
   let index = 0;
 
-  act(() => {
-    renderHook(() => useDebounce(() => index++, 1, []));
-  });
+  renderHook(() => useDebounce(() => index++, 1, []));
 
   await waitFor(() => expect(index).toBe(1));
 });
