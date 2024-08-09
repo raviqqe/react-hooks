@@ -1,4 +1,10 @@
-import { DependencyList, useEffect, useState } from "react";
+import {
+  DependencyList,
+  startTransition,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 export type AsyncState<T> =
   | { loading: false; value: T | undefined }
@@ -9,32 +15,33 @@ export const useAsync = <T>(
   callback: () => Promise<T>,
   dependencies: DependencyList,
 ): AsyncState<T> => {
-  const [loading, setLoading] = useState(true);
-  const [value, setValue] = useState<T | undefined>();
-  const [error, setError] = useState<unknown | undefined>();
+  const id = useRef(0);
+  const [state, setState] = useState<AsyncState<T>>({ loading: true });
 
   useEffect(() => {
-    if (loading) {
+    if (state.loading) {
       return;
     }
 
-    setLoading(true);
+    const previousId = ++id.current;
+    startTransition(() => {
+      if (previousId === id.current) {
+        setState({ loading: true });
+      }
+    });
 
     void callback()
-      .then(setValue)
-      .catch(setError)
-      .finally(() => setLoading(false));
+      .then((value) => {
+        if (previousId === id.current) {
+          setState({ loading: false, value });
+        }
+      })
+      .catch((error) => {
+        if (previousId === id.current) {
+          setState({ loading: false, error });
+        }
+      });
   }, dependencies);
 
-  return loading
-    ? { loading: true }
-    : error
-      ? {
-          error,
-          loading: false,
-        }
-      : {
-          loading: false,
-          value,
-        };
+  return state;
 };
