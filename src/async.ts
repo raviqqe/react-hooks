@@ -13,7 +13,7 @@ export type AsyncState<T> =
 
 export const useAsync = <T>(
   callback: () => Promise<T>,
-  dependencies: DependencyList,
+  dependencies?: DependencyList,
 ): AsyncState<T> => {
   const id = useRef(0);
   const [state, setState] = useState<AsyncState<T>>({ loading: true });
