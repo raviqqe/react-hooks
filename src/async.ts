@@ -19,10 +19,6 @@ export const useAsync = <T>(
   const [state, setState] = useState<AsyncState<T>>({ loading: true });
 
   useEffect(() => {
-    if (state.loading) {
-      return;
-    }
-
     const previousId = ++id.current;
 
     startTransition(() => {

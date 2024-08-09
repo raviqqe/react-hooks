@@ -13,7 +13,7 @@ it("runs a callback", async () => {
     useAsync(async () => index++, []),
   );
 
-  await waitFor(() => {
+  await waitFor(async () => {
     rerender();
     expect(result.current).toEqual({ loading: false, value: 0 });
   });
