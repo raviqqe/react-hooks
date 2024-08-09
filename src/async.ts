@@ -24,6 +24,7 @@ export const useAsync = <T>(
     }
 
     const previousId = ++id.current;
+
     startTransition(() => {
       if (previousId === id.current) {
         setState({ loading: true });
