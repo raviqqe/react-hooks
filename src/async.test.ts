@@ -7,14 +7,48 @@ it("runs without any error", () => {
 });
 
 it("runs a callback", async () => {
-  let index = 0;
+  const { result } = renderHook(() => useAsync(async () => 42, []));
+
+  await waitFor(() =>
+    expect(result.current).toEqual({ loading: false, value: 42 }),
+  );
+});
+
+it("runs a callback twice with the same dependency", async () => {
+  let dependency = 0;
+  let value = 0;
 
   const { result, rerender } = renderHook(() =>
-    useAsync(async () => index++, []),
+    useAsync(async () => ++value, [dependency]),
   );
 
-  await waitFor(async () => {
-    rerender();
-    expect(result.current).toEqual({ loading: false, value: 0 });
-  });
+  await waitFor(() =>
+    expect(result.current).toEqual({ loading: false, value: 1 }),
+  );
+
+  rerender();
+
+  await waitFor(() =>
+    expect(result.current).toEqual({ loading: false, value: 1 }),
+  );
+});
+
+it("runs a callback twice with different dependency", async () => {
+  let dependency = 0;
+  let value = 0;
+
+  const { result, rerender } = renderHook(() =>
+    useAsync(async () => ++value, [dependency]),
+  );
+
+  await waitFor(() =>
+    expect(result.current).toEqual({ loading: false, value: 1 }),
+  );
+
+  ++dependency;
+  rerender();
+
+  await waitFor(() =>
+    expect(result.current).toEqual({ loading: false, value: 2 }),
+  );
 });
