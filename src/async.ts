@@ -19,6 +19,7 @@ export const useAsync = <T>(
     }
 
     setLoading(true);
+
     void callback()
       .then(setValue)
       .catch(setError)
