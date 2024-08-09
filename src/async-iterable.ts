@@ -103,5 +103,5 @@ const useAutomaticAsyncIterableState = <T>({
 }: AsyncIterableState<T>): AutomaticAsyncIterableState<T> => {
   const state = useAsync(next, [next]);
 
-  return "error" in state ? state : { done, error, loading, value };
+  return "error" in state ? state : { done, loading, value };
 };
