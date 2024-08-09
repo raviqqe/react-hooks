@@ -4,7 +4,10 @@
   "description": "My React hooks",
   "repository": "https://github.com/raviqqe/react-hooks",
   "bugs": "https://github.com/raviqqe/react-hooks/issues",
-  "keywords": ["react", "typescript"],
+  "keywords": [
+    "react",
+    "typescript"
+  ],
   "author": "Yota Toyama",
   "license": "MIT",
   "publishConfig": {
@@ -19,6 +22,7 @@
     "test": "vitest --coverage"
   },
   "dependencies": {
+    "@raviqqe/loscore": "^0.2.5",
     "react": "^18.2.0"
   },
   "devDependencies": {
