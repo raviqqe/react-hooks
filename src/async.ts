@@ -1,5 +1,5 @@
 import {
-  DependencyList,
+  type DependencyList,
   startTransition,
   useEffect,
   useRef,
@@ -39,9 +39,10 @@ export const useAsync = <T>(
       })
       .catch((error) => {
         if (previousId === id.current) {
-          setState({ loading: false, error });
+          setState({ error, loading: false });
         }
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 
   return state;
