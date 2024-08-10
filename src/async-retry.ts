@@ -8,10 +8,10 @@ export interface AsyncRetryState<T> extends AsyncState<T> {
 
 export const useAsyncRetry = <T>(
   callback: () => Promise<T>,
-  dependencies?: DependencyList,
+  dependencies: DependencyList,
 ): AsyncRetryState<T> => {
   const [on, retry] = useToggle(false);
-  const state = useAsync(callback, [on, ...(dependencies ?? [])]);
+  const state = useAsync(callback, [on, ...dependencies]);
 
   return { retry, ...state };
 };
