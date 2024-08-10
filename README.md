@@ -1,6 +1,10 @@
 # react-hooks
 
-My React hooks
+A library of React hooks.
+
+## Features
+
+- SSR friendly
 
 ## License
 
