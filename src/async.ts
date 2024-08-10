@@ -12,13 +12,17 @@ export type AsyncState<T> =
   | { loading: true };
 
 export const useAsync = <T>(
-  callback: () => Promise<T> | undefined,
+  callback: (() => Promise<T>) | undefined,
   dependencies?: DependencyList,
 ): AsyncState<T> => {
   const id = useRef(0);
   const [state, setState] = useState<AsyncState<T>>({ loading: true });
 
   useEffect(() => {
+    if (!callback) {
+      return;
+    }
+
     const previousId = ++id.current;
 
     startTransition(() => {
@@ -27,8 +31,8 @@ export const useAsync = <T>(
       }
     });
 
-    void callback?.()
-      ?.then((value) => {
+    void callback()
+      .then((value) => {
         if (previousId === id.current) {
           setState({ loading: false, value });
         }
