@@ -7,7 +7,7 @@ import {
 } from "react";
 
 export type AsyncState<T> =
-  | { loading: false; value: T | undefined }
+  | { loading: false; value: T }
   | { loading: false; error: unknown }
   | { loading: true };
 
