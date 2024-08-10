@@ -6,24 +6,27 @@ import {
   useState,
 } from "react";
 
-export type AsyncState<T> =
-  | { loading: false; value: T }
-  | { loading: false; error: unknown }
-  | { loading: true };
+export interface AsyncState<T> {
+  error?: unknown;
+  loading: boolean;
+  value?: T;
+}
+
+const loadingState: AsyncState<never> = { loading: true };
 
 export const useAsync = <T>(
   callback: () => Promise<T>,
-  dependencies?: DependencyList,
+  dependencies: DependencyList,
 ): AsyncState<T> => {
   const id = useRef(0);
-  const [state, setState] = useState<AsyncState<T>>({ loading: true });
+  const [state, setState] = useState<AsyncState<T>>(loadingState);
 
   useEffect(() => {
     const previousId = ++id.current;
 
     startTransition(() => {
       if (previousId === id.current) {
-        setState({ loading: true });
+        setState(loadingState);
       }
     });
 
