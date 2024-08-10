@@ -56,8 +56,6 @@ const usePreprocessedAsyncIterable = <T, S>(
           return;
         }
 
-        console.log("START");
-
         setLoading(true);
 
         // This is to yield before the first cached batch as a workaround for a bug in react-infinite-scroll-hook.
