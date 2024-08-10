@@ -6,10 +6,11 @@ import {
   useState,
 } from "react";
 
-export type AsyncState<T> =
-  | { error: undefined; loading: false; value: T }
-  | { error: unknown; loading: false; value: undefined }
-  | { error: undefined; loading: true; value: undefined };
+export interface AsyncState<T> {
+  error: unknown;
+  loading: boolean;
+  value: T | undefined;
+}
 
 const loadingState: AsyncState<never> = {
   error: undefined,
