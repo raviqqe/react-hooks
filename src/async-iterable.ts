@@ -3,6 +3,8 @@ import { sleep } from "@raviqqe/loscore/async";
 import { startTransition, useEffect, useMemo, useState } from "react";
 import { useAsync } from "./async.js";
 
+const emptyArray: never[] = [];
+
 interface AutomaticAsyncIterableState<T> {
   done: boolean;
   error?: unknown;
@@ -54,6 +56,8 @@ const usePreprocessedAsyncIterable = <T, S>(
           return;
         }
 
+        console.log("START");
+
         setLoading(true);
 
         // This is to yield before the first cached batch as a workaround for a bug in react-infinite-scroll-hook.
@@ -66,8 +70,11 @@ const usePreprocessedAsyncIterable = <T, S>(
             ? {
                 iterator,
                 value: result.done
-                  ? (state.value ?? [])
-                  : [...(state.value ?? []), ...preprocess(result.value)],
+                  ? (state.value ?? emptyArray)
+                  : [
+                      ...(state.value ?? emptyArray),
+                      ...preprocess(result.value),
+                    ],
               }
             : state,
         );
