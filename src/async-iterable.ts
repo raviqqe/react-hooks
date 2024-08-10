@@ -65,10 +65,9 @@ const usePreprocessedAsyncIterable = <T, S>(
           iterator === state.iterator
             ? {
                 iterator,
-                value: [
-                  ...(state.value ?? []),
-                  ...(result.done ? [] : preprocess(result.value)),
-                ],
+                value: result.done
+                  ? (state.value ?? [])
+                  : [...(state.value ?? []), ...preprocess(result.value)],
               }
             : state,
         );
