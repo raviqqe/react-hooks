@@ -3,12 +3,15 @@ import { sleep } from "@raviqqe/loscore/async";
 import { useEffect, useMemo, useState } from "react";
 import { useAsync } from "./async.js";
 
-interface AsyncIterableState<T> {
-  value: T[] | null;
-  done: boolean;
-  loading: boolean;
-  next: () => Promise<void>;
-}
+type AsyncIterableState<T> =
+  | { loading: false; error: unknown }
+  | { loading: false; value: T[] }
+  | {
+      value: T[] | null;
+      done: boolean;
+      loading: boolean;
+      next: () => Promise<void>;
+    };
 
 interface AutomaticAsyncIterableState<T> {
   done: boolean;
