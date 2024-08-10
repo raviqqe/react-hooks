@@ -82,7 +82,7 @@ it("retries a computation", async () => {
   await waitFor(() =>
     expect(result.current).toEqual({
       loading: false,
-      retry: expect.any(Function),
+      retry: expect.any(Function) as unknown,
       value: 2,
     }),
   );
