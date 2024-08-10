@@ -12,7 +12,7 @@ it("runs a callback", async () => {
   await waitFor(() =>
     expect(result.current).toEqual({
       loading: false,
-      retry: expect.any(Function),
+      retry: expect.any(Function) as unknown,
       value: 42,
     }),
   );
@@ -28,7 +28,7 @@ it("runs a callback twice with the same dependency", async () => {
   await waitFor(() =>
     expect(result.current).toEqual({
       loading: false,
-      retry: expect.any(Function),
+      retry: expect.any(Function) as unknown,
       value: 1,
     }),
   );
@@ -38,7 +38,7 @@ it("runs a callback twice with the same dependency", async () => {
   await waitFor(() =>
     expect(result.current).toEqual({
       loading: false,
-      retry: expect.any(Function),
+      retry: expect.any(Function) as unknown,
       value: 1,
     }),
   );
@@ -55,7 +55,7 @@ it("runs a callback twice with different dependency", async () => {
   await waitFor(() =>
     expect(result.current).toEqual({
       loading: false,
-      retry: expect.any(Function),
+      retry: expect.any(Function) as unknown,
       value: 1,
     }),
   );
@@ -66,7 +66,7 @@ it("runs a callback twice with different dependency", async () => {
   await waitFor(() =>
     expect(result.current).toEqual({
       loading: false,
-      retry: expect.any(Function),
+      retry: expect.any(Function) as unknown,
       value: 2,
     }),
   );
