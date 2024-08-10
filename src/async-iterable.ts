@@ -8,8 +8,7 @@ type AsyncIterableState<T> =
   | { done: true; loading: false; value: T[] }
   | { done: false; loading: false; value: T[] }
   | { done: false; loading: true; value: T[] }
-  | { loading: true; value: T[] }
-  | { loading: true }
+  | { done: false; loading: true }
   | {
       done: boolean;
       loading: boolean;
