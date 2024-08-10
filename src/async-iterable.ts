@@ -3,12 +3,15 @@ import { sleep } from "@raviqqe/loscore/async";
 import { useEffect, useMemo, useState } from "react";
 import { useAsync } from "./async.js";
 
-interface AsyncIterableState<T> {
+interface AutomaticAsyncIterableState<T> {
   done: boolean;
   error?: unknown;
   loading: boolean;
-  next?: () => Promise<void>;
   value?: T[];
+}
+
+interface AsyncIterableState<T> extends AutomaticAsyncIterableState<T> {
+  next?: () => Promise<void>;
 }
 
 const chunk = <T>(value: T) => [value];
@@ -81,23 +84,19 @@ const usePreprocessedAsyncIterable = <T, S>(
 
 export const useAutomaticAsyncIterable = <T>(
   iterable?: AsyncIterable<T>,
-): AsyncIterableState<T> =>
+): AutomaticAsyncIterableState<T> =>
   useAutomaticAsyncIterableState(useAsyncIterable(iterable));
 
 export const useAutomaticFlatAsyncIterable = <T>(
   iterable?: AsyncIterable<T[]>,
-): AsyncIterableState<T> =>
+): AutomaticAsyncIterableState<T> =>
   useAutomaticAsyncIterableState(useFlatAsyncIterable(iterable));
 
 const useAutomaticAsyncIterableState = <T>({
-  loading,
-  done,
   next,
-  value,
-}: AsyncIterableState<T>): AsyncIterableState<T> => {
+  ...rest
+}: AsyncIterableState<T>): AutomaticAsyncIterableState<T> => {
   const state = useAsync(next, [next]);
 
-  return "error" in state
-    ? { error, done: true, loading: false }
-    : { done, loading, value };
+  return "error" in state ? { done: true, ...state } : rest;
 };
