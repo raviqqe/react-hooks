@@ -4,10 +4,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useAsync } from "./async.js";
 
 type AsyncIterableState<T> =
-  | { loading: false; error: unknown }
-  | { loading: false; value: T[] }
+  | { done: true; error: unknown; loading: false }
+  | { done: true; loading: false; value: T[] }
+  | { done: false; loading: false; value: T[] }
+  | { done: false; loading: true; value: T[] }
+  | { loading: true; value: T[] }
+  | { loading: true }
   | {
-      value: T[] | null;
       done: boolean;
       loading: boolean;
       next: () => Promise<void>;
