@@ -7,16 +7,12 @@ import {
 } from "react";
 
 export interface AsyncState<T> {
-  error: unknown;
+  error?: unknown;
   loading: boolean;
-  value: T | undefined;
+  value?: T;
 }
 
-const loadingState: AsyncState<never> = {
-  error: undefined,
-  loading: true,
-  value: undefined,
-};
+const loadingState: AsyncState<never> = { loading: true };
 
 export const useAsync = <T>(
   callback: () => Promise<T>,
@@ -37,12 +33,12 @@ export const useAsync = <T>(
     void callback()
       .then((value) => {
         if (previousId === id.current) {
-          setState({ error: undefined, loading: false, value });
+          setState({ loading: false, value });
         }
       })
       .catch((error) => {
         if (previousId === id.current) {
-          setState({ error, loading: false, value: undefined });
+          setState({ error, loading: false });
         }
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
