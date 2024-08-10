@@ -1,6 +1,6 @@
 import { type DependencyList } from "react";
-import { useToggle } from "./toggle.js";
 import { type AsyncState, useAsync } from "./async.js";
+import { useToggle } from "./toggle.js";
 
 export interface AsyncRetryState<T> extends AsyncState<T> {
   retry: () => void;
