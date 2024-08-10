@@ -1,7 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { beforeEach, expect, it, vi } from "vitest";
 import { useAsyncIterable } from "./async-iterable.js";
-import { sleep } from "@raviqqe/loscore/async";
 
 beforeEach(() => {
   vi.useFakeTimers();
