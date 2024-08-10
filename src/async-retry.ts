@@ -11,7 +11,6 @@ export const useAsyncRetry = <T>(
   dependencies?: DependencyList,
 ): AsyncRetryState<T> => {
   const [on, retry] = useToggle(false);
-
   const state = useAsync(callback, [on, ...(dependencies ?? [])]);
 
   return { retry, ...state };
