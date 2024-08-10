@@ -1,6 +1,6 @@
 import { identity, once } from "@raviqqe/loscore";
 import { sleep } from "@raviqqe/loscore/async";
-import { useEffect, useMemo, useState } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import { useAsync } from "./async.js";
 
 interface AutomaticAsyncIterableState<T> {
@@ -43,8 +43,8 @@ const usePreprocessedAsyncIterable = <T, S>(
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setState({ iterator, value: undefined });
-    setDone(false);
+    startTransition(() => setState({ iterator, value: undefined }));
+    startTransition(() => setDone(false));
   }, [iterator]);
 
   const next = useMemo(
