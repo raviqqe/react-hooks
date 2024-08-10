@@ -7,15 +7,8 @@ interface AsyncIterableState<T> {
   done: boolean;
   error?: unknown;
   loading: boolean;
-  next: () => Promise<void>;
+  next?: () => Promise<void>;
   value?: T[];
-}
-
-interface AutomaticAsyncIterableState<T> {
-  done: boolean;
-  value: T[] | null;
-  loading: boolean;
-  error: unknown;
 }
 
 const chunk = <T>(value: T) => [value];
@@ -38,16 +31,16 @@ const usePreprocessedAsyncIterable = <T, S>(
   );
   const [state, setState] = useState<{
     iterator: AsyncIterator<S> | undefined;
-    value: T[] | null;
+    value: T[] | undefined;
   }>({
     iterator,
-    value: null,
+    value: undefined,
   });
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setState({ iterator, value: null });
+    setState({ iterator, value: undefined });
     setDone(false);
   }, [iterator]);
 
@@ -88,12 +81,12 @@ const usePreprocessedAsyncIterable = <T, S>(
 
 export const useAutomaticAsyncIterable = <T>(
   iterable?: AsyncIterable<T>,
-): AutomaticAsyncIterableState<T> =>
+): AsyncIterableState<T> =>
   useAutomaticAsyncIterableState(useAsyncIterable(iterable));
 
 export const useAutomaticFlatAsyncIterable = <T>(
   iterable?: AsyncIterable<T[]>,
-): AutomaticAsyncIterableState<T> =>
+): AsyncIterableState<T> =>
   useAutomaticAsyncIterableState(useFlatAsyncIterable(iterable));
 
 const useAutomaticAsyncIterableState = <T>({
@@ -101,7 +94,7 @@ const useAutomaticAsyncIterableState = <T>({
   done,
   next,
   value,
-}: AsyncIterableState<T>): AutomaticAsyncIterableState<T> => {
+}: AsyncIterableState<T>): AsyncIterableState<T> => {
   const state = useAsync(next, [next]);
 
   return "error" in state
