@@ -15,13 +15,11 @@ it("iterates an iterable", async () => {
   const iterable = (async function* () {
     yield 42;
   })();
-  const { result, rerender } = renderHook(() => useAsyncIterable(iterable));
+  const { result } = renderHook(() => useAsyncIterable(iterable));
 
   await result.current.next?.();
 
-  await waitFor(async () => {
-    await sleep(1);
-    rerender();
-    expect(result.current).toEqual({ done: true, loading: false, value: [42] });
-  });
+  await waitFor(async () =>
+    expect(result.current).toEqual({ done: true, loading: false, value: [42] }),
+  );
 });
