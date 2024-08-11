@@ -10,8 +10,8 @@ export const useAsyncRetry = <T>(
   callback: () => Promise<T>,
   dependencies: DependencyList,
 ): AsyncRetryState<T> => {
-  const [on, retry] = useToggle(false);
+  const [on, toggle] = useToggle(false);
   const state = useAsync(callback, [on, ...dependencies]);
 
-  return { retry: () => startTransition(retry), ...state };
+  return { retry: () => startTransition(toggle), ...state };
 };
