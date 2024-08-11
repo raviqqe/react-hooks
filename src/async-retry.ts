@@ -1,4 +1,4 @@
-import { type DependencyList } from "react";
+import { startTransition, type DependencyList } from "react";
 import { type AsyncState, useAsync } from "./async.js";
 import { useToggle } from "./toggle.js";
 
@@ -13,5 +13,5 @@ export const useAsyncRetry = <T>(
   const [on, retry] = useToggle(false);
   const state = useAsync(callback, [on, ...dependencies]);
 
-  return { retry, ...state };
+  return { retry: () => startTransition(retry), ...state };
 };
