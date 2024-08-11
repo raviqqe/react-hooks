@@ -1,4 +1,4 @@
-import { type DependencyList, useMemo } from "react";
+import { type DependencyList, startTransition, useMemo } from "react";
 import { useToggle } from "./toggle.js";
 
 export const useMemoRetry = <T>(
@@ -9,5 +9,5 @@ export const useMemoRetry = <T>(
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const value = useMemo(callback, [...dependencies, on]);
 
-  return [value, toggle];
+  return [value, () => startTransition(toggle)];
 };
