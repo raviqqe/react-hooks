@@ -23,24 +23,18 @@ export const useAsync = <T>(
 
   useEffect(() => {
     const previousId = ++id.current;
-
-    startTransition(() => {
-      if (previousId === id.current) {
-        setState(loadingState);
-      }
-    });
-
-    void callback()
-      .then((value) => {
+    const update = (state: AsyncState<T>): void =>
+      startTransition(() => {
         if (previousId === id.current) {
-          setState({ loading: false, value });
-        }
-      })
-      .catch((error) => {
-        if (previousId === id.current) {
-          setState({ error, loading: false });
+          setState(state);
         }
       });
+
+    update(loadingState);
+
+    void callback()
+      .then((value) => update({ loading: false, value }))
+      .catch((error) => update({ error, loading: false }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 
