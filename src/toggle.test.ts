@@ -1,4 +1,4 @@
-import { renderHook, act } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 import { expect, it } from "vitest";
 import { useToggle } from "./toggle.js";
 
