@@ -6,7 +6,6 @@ export const useMemoRetry = <T>(
   dependencies: DependencyList,
 ): [T, () => void] => {
   const [on, toggle] = useToggle(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const value = useMemo(callback, [...dependencies, on]);
 
   return [value, () => startTransition(toggle)];
