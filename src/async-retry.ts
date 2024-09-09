@@ -1,4 +1,4 @@
-import { startTransition, type DependencyList } from "react";
+import { type DependencyList, startTransition } from "react";
 import { type AsyncState, useAsync } from "./async.js";
 import { useToggle } from "./toggle.js";
 

@@ -35,7 +35,6 @@ export const useAsync = <T>(
     void callback()
       .then((value) => update({ loading: false, value }))
       .catch((error) => update({ error, loading: false }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 
   return state;

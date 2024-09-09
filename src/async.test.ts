@@ -17,7 +17,7 @@ it("runs a callback", async () => {
 it("runs a callback twice with the same dependency", async () => {
   let value = 0;
 
-  const { result, rerender } = renderHook(() =>
+  const { rerender, result } = renderHook(() =>
     useAsync(async () => ++value, [0]),
   );
 
@@ -36,7 +36,7 @@ it("runs a callback twice with different dependency", async () => {
   let dependency = 0;
   let value = 0;
 
-  const { result, rerender } = renderHook(() =>
+  const { rerender, result } = renderHook(() =>
     useAsync(async () => ++value, [dependency]),
   );
 
