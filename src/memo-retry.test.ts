@@ -5,7 +5,7 @@ import { useMemoRetry } from "./memo-retry.js";
 it("memoizes a value", () => {
   let index = 0;
 
-  const { result, rerender } = renderHook(() =>
+  const { rerender, result } = renderHook(() =>
     useMemoRetry(() => index++, []),
   );
 
@@ -20,7 +20,7 @@ it("updates a value", () => {
   let value = 0;
   let index = 0;
 
-  const { result, rerender } = renderHook(() =>
+  const { rerender, result } = renderHook(() =>
     useMemoRetry(() => index++, [value]),
   );
 

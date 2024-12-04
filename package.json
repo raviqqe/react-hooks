@@ -1,13 +1,10 @@
 {
   "name": "@raviqqe/react-hooks",
-  "version": "0.1.1",
+  "version": "0.2.4",
   "description": "My React hooks",
   "repository": "https://github.com/raviqqe/react-hooks",
   "bugs": "https://github.com/raviqqe/react-hooks/issues",
-  "keywords": [
-    "react",
-    "typescript"
-  ],
+  "keywords": ["react", "typescript"],
   "author": "Yota Toyama",
   "license": "MIT",
   "publishConfig": {
@@ -26,14 +23,14 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@raviqqe/eslint-config": "^3.0.0",
+    "@raviqqe/eslint-config": "^4.0.3",
     "@raviqqe/tsconfig": "^1.0.6",
     "@testing-library/react": "^16.0.0",
     "@types/react": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.0",
     "@vitest/coverage-v8": "^2.0.1",
-    "eslint": "^8.41.0",
-    "jsdom": "^24.0.0",
+    "eslint": "^9.10.0",
+    "jsdom": "^25.0.0",
     "typescript": "^5.0.4",
     "vitest": "^2.0.1"
   }

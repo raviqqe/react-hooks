@@ -1,4 +1,4 @@
-import { useRef, type DependencyList, useEffect, useCallback } from "react";
+import { type DependencyList, useCallback, useEffect, useRef } from "react";
 
 export const useDebounce = (
   delay: number,
@@ -24,6 +24,5 @@ export const useDebounce = (
     }, delay);
 
     return clear;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 };

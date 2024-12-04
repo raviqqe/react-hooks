@@ -6,17 +6,20 @@ import {
   useState,
 } from "react";
 
-export type AsyncState<T> =
-  | { loading: false; value: T | undefined }
-  | { loading: false; error: unknown }
-  | { loading: true };
+export interface AsyncState<T> {
+  error?: unknown;
+  loading: boolean;
+  value?: T;
+}
+
+const loadingState: AsyncState<never> = { loading: true };
 
 export const useAsync = <T>(
-  callback: (() => Promise<T>) | undefined,
-  dependencies?: DependencyList,
+  callback: () => Promise<T>,
+  dependencies: DependencyList,
 ): AsyncState<T> => {
   const id = useRef(0);
-  const [state, setState] = useState<AsyncState<T>>({ loading: true });
+  const [state, setState] = useState<AsyncState<T>>(loadingState);
 
   useEffect(() => {
     if (!callback) {
@@ -24,25 +27,18 @@ export const useAsync = <T>(
     }
 
     const previousId = ++id.current;
-
-    startTransition(() => {
-      if (previousId === id.current) {
-        setState({ loading: true });
-      }
-    });
-
-    void callback()
-      .then((value) => {
+    const update = (state: AsyncState<T>): void =>
+      startTransition(() => {
         if (previousId === id.current) {
-          setState({ loading: false, value });
-        }
-      })
-      .catch((error) => {
-        if (previousId === id.current) {
-          setState({ error, loading: false });
+          setState(state);
         }
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    update(loadingState);
+
+    void callback()
+      .then((value) => update({ loading: false, value }))
+      .catch((error) => update({ error, loading: false }));
   }, dependencies);
 
   return state;
