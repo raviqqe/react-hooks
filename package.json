@@ -19,8 +19,7 @@
     "test": "vitest --coverage"
   },
   "dependencies": {
-    "@raviqqe/loscore": "^0.2.5",
-    "react": "^18.2.0"
+    "@raviqqe/loscore": "^0.2.5"
   },
   "devDependencies": {
     "@raviqqe/eslint-config": "^4.0.3",
@@ -33,5 +32,8 @@
     "jsdom": "^25.0.0",
     "typescript": "^5.0.4",
     "vitest": "^2.0.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
   }
 }
