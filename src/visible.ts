@@ -1,4 +1,4 @@
-import { type Ref, type RefObject, useEffect, useRef, useState } from "react";
+import { type Ref, type RefObject, useMemo, useRef } from "react";
 import { useIntersection } from "react-use";
 
 export const useVisible = <T extends HTMLElement>(
@@ -11,11 +11,10 @@ export const useVisible = <T extends HTMLElement>(
   const intersection = useIntersection(ref as RefObject<HTMLElement>, {
     threshold,
   });
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    setVisible((visible) => visible || !!intersection?.isIntersecting);
-  }, [intersection?.isIntersecting]);
+  const visible = useMemo(
+    () => !!intersection?.isIntersecting,
+    [intersection?.isIntersecting],
+  );
 
   return { ref, visible };
 };
