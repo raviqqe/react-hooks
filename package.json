@@ -37,7 +37,6 @@
     "@vitest/coverage-v8": "^2.0.1",
     "eslint": "^9.10.0",
     "jsdom": "^25.0.0",
-    "rslib": "^0.0.10",
     "typescript": "^5.0.4",
     "vitest": "^2.0.1"
   },
