@@ -24,7 +24,7 @@
     "test": "vitest --coverage"
   },
   "dependencies": {
-    "@raviqqe/loscore": "^0.2.5",
+    "es-toolkit": "^1.29.0",
     "react-use": "^17.5.1"
   },
   "devDependencies": {

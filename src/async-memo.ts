@@ -1,5 +1,5 @@
-import { useAsync } from "@raviqqe/react-hooks";
 import { type DependencyList } from "react";
+import { useAsync } from "./async.js";
 
 // TODO Replace with `use` and `cache` after the future release of React 19.
 export const useAsyncMemo = <T>(

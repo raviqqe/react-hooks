@@ -1,6 +1,6 @@
-import { useAsync } from "@raviqqe/react-hooks";
 import { delay, identity, once } from "es-toolkit";
 import { useEffect, useMemo, useState } from "react";
+import { useAsync } from "./async.js";
 
 interface AsyncIterableState<T> {
   done: boolean;
