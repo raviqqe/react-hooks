@@ -1,6 +1,6 @@
 {
   "name": "@raviqqe/react-hooks",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "My React hooks",
   "repository": "https://github.com/raviqqe/react-hooks",
   "bugs": "https://github.com/raviqqe/react-hooks/issues",
@@ -11,7 +11,12 @@
     "provenance": true
   },
   "type": "module",
-  "main": "dist/main.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
@@ -19,7 +24,8 @@
     "test": "vitest --coverage"
   },
   "dependencies": {
-    "@raviqqe/loscore": "^0.2.5"
+    "@raviqqe/loscore": "^0.2.5",
+    "react-use": "^17.5.1"
   },
   "devDependencies": {
     "@raviqqe/eslint-config": "^4.0.3",
