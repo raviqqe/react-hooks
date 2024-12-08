@@ -1,6 +1,6 @@
-import { useAsync } from "@raviqqe/react-hooks";
+import { useAsync } from "./async.js";
 import { type Ref } from "react";
-import { useVisible } from "./visible";
+import { useVisible } from "./visible.js";
 
 export const useInfiniteScroll = (
   callback: () => Promise<void> | void,
