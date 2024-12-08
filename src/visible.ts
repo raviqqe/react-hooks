@@ -11,7 +11,10 @@ export const useVisible = <T extends HTMLElement>(
   const intersection = useIntersection(ref as RefObject<HTMLElement>, {
     threshold,
   });
-  const visible = useMemo(() => !!intersection?.isIntersecting);
+  const visible = useMemo(
+    () => !!intersection?.isIntersecting,
+    [intersection?.isIntersecting],
+  );
 
   return { ref, visible };
 };
