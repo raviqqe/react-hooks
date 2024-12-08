@@ -4,17 +4,18 @@
   "description": "My React hooks",
   "repository": "https://github.com/raviqqe/react-hooks",
   "bugs": "https://github.com/raviqqe/react-hooks/issues",
-  "keywords": [
-    "react",
-    "typescript"
-  ],
+  "keywords": ["react", "typescript"],
   "author": "Yota Toyama",
   "license": "MIT",
   "publishConfig": {
     "provenance": true
   },
   "type": "module",
-  "main": "dist/main.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
