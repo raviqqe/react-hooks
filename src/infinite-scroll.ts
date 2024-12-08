@@ -1,5 +1,5 @@
-import { useAsync } from "./async.js";
 import { type Ref } from "react";
+import { useAsync } from "./async.js";
 import { useVisible } from "./visible.js";
 
 export const useInfiniteScroll = <T extends HTMLElement>(

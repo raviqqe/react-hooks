@@ -1,4 +1,4 @@
-import { type Ref, RefObject, useEffect, useRef, useState } from "react";
+import { type Ref, type RefObject, useEffect, useRef, useState } from "react";
 import { useIntersection } from "react-use";
 
 export const useVisible = <T extends HTMLElement>(
