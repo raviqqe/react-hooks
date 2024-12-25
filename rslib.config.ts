@@ -4,6 +4,7 @@ export default defineConfig({
   lib: [
     {
       autoExternal: false,
+      bundle: false,
       dts: true,
       format: "esm",
       output: {
