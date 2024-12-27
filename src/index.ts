@@ -1,4 +1,5 @@
 export * from "./async-iterable.js";
+export * from "./intersection.js";
 export * from "./async-memo.js";
 export * from "./async-retry.js";
 export * from "./async.js";

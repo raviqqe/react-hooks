@@ -2,6 +2,7 @@ import { RefObject, useEffect, useState } from "react";
 
 export const useIntersection = <T extends HTMLElement>(
   ref: RefObject<T>,
+  options?: IntersectionObserverInit,
 ): IntersectionObserverEntry | null => {
   const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null);
 
@@ -10,8 +11,9 @@ export const useIntersection = <T extends HTMLElement>(
       return;
     }
 
-    const observer = new IntersectionObserver(([entry]) =>
-      setEntry(entry ?? null),
+    const observer = new IntersectionObserver(
+      ([entry]) => setEntry(entry ?? null),
+      options,
     );
     observer.observe(ref.current);
 
@@ -19,7 +21,7 @@ export const useIntersection = <T extends HTMLElement>(
       setEntry(null);
       observer.disconnect();
     };
-  }, [ref.current]);
+  }, [ref.current, options?.root, options?.rootMargin, options?.threshold]);
 
   return entry;
 };
