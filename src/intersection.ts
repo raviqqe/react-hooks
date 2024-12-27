@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useState } from "react";
 
 export const useIntersection = <T extends HTMLElement>(
-  ref: RefObject<T>,
+  ref: RefObject<T | null>,
   options?: IntersectionObserverInit,
 ): IntersectionObserverEntry | null => {
   const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null);
