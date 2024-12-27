@@ -1,17 +1,16 @@
-import { type Ref } from "react";
+import { type RefObject } from "react";
 import { useAsync } from "./async.js";
 import { useVisible } from "./visible.js";
 
 export const useInfiniteScroll = <T extends HTMLElement>(
+  ref: RefObject<T | null>,
   callback: () => Promise<void> | void,
-): Ref<T> => {
-  const { ref, visible } = useVisible<T>();
+): void => {
+  const visible = useVisible<T>(ref);
 
   useAsync(async () => {
     if (visible) {
       await callback();
     }
   }, [callback, visible]);
-
-  return ref;
 };
