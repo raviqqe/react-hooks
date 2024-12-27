@@ -7,7 +7,6 @@ export default defineConfig({
       format: "esm",
       output: {
         minify: true,
-        externals: ["es-toolkit", "react"],
       },
     },
   ],
