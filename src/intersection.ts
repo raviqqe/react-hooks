@@ -7,11 +7,9 @@ export const useIntersection = (
 
   useEffect(() => {
     if (ref.current) {
-      const handler = (entries: IntersectionObserverEntry[]) => {
-        setEntry(entries[0]);
-      };
-
-      const observer = new IntersectionObserver(handler);
+      const observer = new IntersectionObserver(([entry]) =>
+        setEntry(entry ?? null),
+      );
       observer.observe(ref.current);
 
       return () => {
@@ -19,7 +17,6 @@ export const useIntersection = (
         observer.disconnect();
       };
     }
-    return () => {};
   }, [ref.current]);
 
   return entry;
