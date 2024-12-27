@@ -5,6 +5,7 @@ export * from "./async.js";
 export * from "./browser.js";
 export * from "./debounce.js";
 export * from "./infinite-scroll.js";
+export * from "./intersection.js";
 export * from "./language.js";
 export * from "./memo-retry.js";
 export * from "./previous.js";

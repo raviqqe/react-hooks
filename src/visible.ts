@@ -1,14 +1,11 @@
-import { type Ref, type RefObject, useMemo, useRef } from "react";
-import { useIntersection } from "react-use";
+import { type RefObject, useMemo } from "react";
+import { useIntersection } from "./intersection.js";
 
 export const useVisible = <T extends HTMLElement>(
+  ref: RefObject<T | null>,
   threshold?: number,
-): {
-  ref: Ref<T | null>;
-  visible: boolean;
-} => {
-  const ref = useRef<T | null>(null);
-  const intersection = useIntersection(ref as RefObject<HTMLElement>, {
+): boolean => {
+  const intersection = useIntersection(ref, {
     threshold,
   });
   const visible = useMemo(
@@ -16,5 +13,5 @@ export const useVisible = <T extends HTMLElement>(
     [intersection?.isIntersecting],
   );
 
-  return { ref, visible };
+  return visible;
 };
