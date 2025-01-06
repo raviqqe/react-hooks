@@ -30,7 +30,7 @@
   "devDependencies": {
     "@raviqqe/eslint-config": "^4.0.3",
     "@raviqqe/tsconfig": "^1.0.6",
-    "@rslib/core": "^0.2.0",
+    "@rslib/core": "^0.3.0",
     "@testing-library/react": "^16.0.0",
     "@types/react": "^19.0.1",
     "@vitejs/plugin-react": "^4.0.0",
