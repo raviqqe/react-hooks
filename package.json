@@ -28,7 +28,7 @@
     "react": "^19.0.0"
   },
   "devDependencies": {
-    "@raviqqe/eslint-config": "^4.0.3",
+    "@raviqqe/eslint-config": "^4.1.10",
     "@raviqqe/tsconfig": "^1.0.6",
     "@rslib/core": "^0.5.0",
     "@testing-library/react": "^16.0.0",
