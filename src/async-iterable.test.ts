@@ -10,7 +10,7 @@ describe(useAutomaticAsyncIterable.name, () => {
     await waitFor(async () => expect(result.current.value).toEqual([]));
   });
 
-  it("runs without any error", async () => {
+  it("collects a value", async () => {
     const iterator = (async function* () {
       yield 42;
     })();
