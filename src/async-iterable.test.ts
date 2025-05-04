@@ -1,7 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { useAutomaticAsyncIterable } from "./async-iterable.js";
-import { delay } from "es-toolkit";
 
 describe(useAutomaticAsyncIterable.name, () => {
   it("collects no value", async () => {
