@@ -18,4 +18,14 @@ describe(useAutomaticAsyncIterable.name, () => {
 
     await waitFor(async () => expect(result.current.value).toEqual([42]));
   });
+
+  it("collects two values", async () => {
+    const iterator = (async function* () {
+      yield 1;
+      yield 2;
+    })();
+    const { result } = renderHook(() => useAutomaticAsyncIterable(iterator));
+
+    await waitFor(async () => expect(result.current.value).toEqual([1, 2]));
+  });
 });
