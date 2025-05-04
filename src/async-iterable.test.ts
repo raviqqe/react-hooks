@@ -28,4 +28,24 @@ describe(useAutomaticAsyncIterable.name, () => {
 
     await waitFor(async () => expect(result.current.value).toEqual([1, 2]));
   });
+
+  it("collects a value twice", async () => {
+    const { rerender, result } = renderHook(
+      ({ iterator }) => useAutomaticAsyncIterable(iterator),
+      {
+        initialProps: {
+          iterator: (async function* () {
+            yield 0;
+          })(),
+        },
+      },
+    );
+    rerender({
+      iterator: (async function* () {
+        yield 42;
+      })(),
+    });
+
+    await waitFor(async () => expect(result.current.value).toEqual([42]));
+  });
 });
