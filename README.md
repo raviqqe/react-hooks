@@ -8,4 +8,4 @@ My React hooks
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://github.com/raviqqe/react-hooks/blob/main/LICENSE)
