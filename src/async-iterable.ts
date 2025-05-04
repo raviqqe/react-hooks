@@ -61,7 +61,9 @@ const usePreprocessedAsyncIterable = <T, S>(
         const result = await iterator.next();
 
         setValue((value) =>
-          result.done ? value : [...(value ?? []), ...preprocess(result.value)],
+          result.done
+            ? (value ?? [])
+            : [...(value ?? []), ...preprocess(result.value)],
         );
         setDone(result.done ?? false);
         setLoading(false);
