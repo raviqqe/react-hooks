@@ -49,7 +49,7 @@ const usePreprocessedAsyncIterable = <T, S>(
   const next = useMemo(
     () =>
       once(async () => {
-        if (!iterator || iterator !== ref.current) {
+        if (!iterator) {
           return;
         }
 
@@ -59,6 +59,10 @@ const usePreprocessedAsyncIterable = <T, S>(
         // This probably prevents a loading flag from being set back to false in a synchronous way.
         await delay(0);
         const result = await iterator.next();
+
+        if (iterator !== ref.current) {
+          return;
+        }
 
         setValue((value) =>
           result.done
