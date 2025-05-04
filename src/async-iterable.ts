@@ -1,5 +1,5 @@
 import { delay, identity, once } from "es-toolkit";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useAsync } from "./async.js";
 
 interface AsyncIterableState<T> {
@@ -34,6 +34,9 @@ const usePreprocessedAsyncIterable = <T, S>(
     () => iterable?.[Symbol.asyncIterator](),
     [iterable],
   );
+  const ref = useRef(iterator);
+  ref.current = iterator;
+
   const [value, setValue] = useState<T[] | null>(null);
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -46,7 +49,7 @@ const usePreprocessedAsyncIterable = <T, S>(
   const next = useMemo(
     () =>
       once(async () => {
-        if (!iterator) {
+        if (!iterator || iterator !== ref.current) {
           return;
         }
 
