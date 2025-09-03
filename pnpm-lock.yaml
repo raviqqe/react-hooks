@@ -20,7 +20,7 @@ importers:
         version: 5.0.1(@typescript-eslint/utils@8.40.0(eslint@9.34.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.34.0(jiti@2.5.1))(typescript@5.9.2)
       '@raviqqe/tsconfig':
         specifier: ^2.0.1
-        version: 2.0.1
+        version: 2.0.2
       '@rslib/core':
         specifier: ^0.12.2
         version: 0.12.4(typescript@5.9.2)
@@ -537,8 +537,9 @@ packages:
     resolution: {integrity: sha512-Uo5Rn3vGj5CMdP5VHorpmecweH/nImOsLKy0/6HbbkjHHRxLmS9nf1mP8XEyxQwXggJjkmvyIlXOEXUaUayV5Q==}
     engines: {node: '>=24.6.0'}
 
-  '@raviqqe/tsconfig@2.0.1':
-    resolution: {integrity: sha512-Pr3F3/Jd4CQbzQwiFG75pmzh9sZHngip9lgEaUUO2E6Wub06OsCS6MAcC0Wb6+RTc+3zXGz5iS1oczDoFXFmcQ==}
+  '@raviqqe/tsconfig@2.0.2':
+    resolution: {integrity: sha512-ySX6Lsem2y4/6Vnes92HhEw7xzVMZoXXnHoO/i8YQk8ZUtiIJmY2xAwcn4ERJAp4wW4Y6yYgPP0ieVig55REZQ==}
+    engines: {node: '>=24.6.0'}
 
   '@rolldown/pluginutils@1.0.0-beta.34':
     resolution: {integrity: sha512-LyAREkZHP5pMom7c24meKmJCdhf2hEyvam2q0unr3or9ydwDL+DJ8chTF6Av/RFPb3rH8UFBdMzO5MxTZW97oA==}
@@ -2880,7 +2881,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@raviqqe/tsconfig@2.0.1':
+  '@raviqqe/tsconfig@2.0.2':
     dependencies:
       typescript: 5.9.2
 
