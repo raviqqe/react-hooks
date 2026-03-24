@@ -19,8 +19,8 @@ importers:
         specifier: ^5.0.2
         version: 5.0.4(@typescript-eslint/utils@8.53.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@raviqqe/tsconfig':
-        specifier: ^2.0.3
-        version: 2.0.3
+        specifier: ^3.0.0
+        version: 3.0.0
       '@rslib/core':
         specifier: ^0.20.0
         version: 0.20.0(core-js@3.47.0)(typescript@5.9.3)
@@ -537,9 +537,9 @@ packages:
     resolution: {integrity: sha512-+AkAfXOwSQdAcp1ZK/rwnlM4APMghPHHDojEvnzWkBDNByx2gRh+AUsRY5deXjLwH6U+fzMe0CV5G7X0i21I4w==}
     engines: {node: '>=25.3.0'}
 
-  '@raviqqe/tsconfig@2.0.3':
-    resolution: {integrity: sha512-9eTFd1ye3CcD0vfoPVkLzBr+cOTx/Vk5+feJb9KM4rWxEx3zGtXvAr2v3Er2DOdP8w0c2KhwKXFB/By2NffIHA==}
-    engines: {node: '>=24.6.0'}
+  '@raviqqe/tsconfig@3.0.0':
+    resolution: {integrity: sha512-axoa5/vjOV/BoPQCyOpfdQr+/vjT9HKo9fxhUB2yvh6I9oRKntcHlht5kTbTndQVBgyreHfaa1STKoFqziZ+dg==}
+    engines: {node: '>=25.8.0'}
 
   '@rolldown/pluginutils@1.0.0-rc.3':
     resolution: {integrity: sha512-eybk3TjzzzV97Dlj5c+XrBFW57eTNhzod66y9HrBlzJ6NsCrWCp/2kaPS3K9wJmurBC0Tdw4yPjXKZqlznim3Q==}
@@ -2131,6 +2131,11 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  typescript@6.0.2:
+    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
     engines: {node: '>= 0.4'}
@@ -2717,9 +2722,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@raviqqe/tsconfig@2.0.3':
+  '@raviqqe/tsconfig@3.0.0':
     dependencies:
-      typescript: 5.9.3
+      typescript: 6.0.2
 
   '@rolldown/pluginutils@1.0.0-rc.3': {}
 
@@ -4506,6 +4511,8 @@ snapshots:
       - supports-color
 
   typescript@5.9.3: {}
+
+  typescript@6.0.2: {}
 
   unbox-primitive@1.1.0:
     dependencies:
