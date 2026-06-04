@@ -1,4 +1,4 @@
-import { type DependencyList } from "react";
+import type { DependencyList } from "react";
 import { useAsync } from "./async.js";
 
 // TODO Replace with `use` and `cache` after the future release of React 19.
