@@ -1,4 +1,4 @@
-import { type RefObject } from "react";
+import type { RefObject } from "react";
 import { useAsync } from "./async.js";
 import { useVisible } from "./visible.js";
 
